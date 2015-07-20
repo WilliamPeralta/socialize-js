@@ -1,0 +1,12 @@
+{
+  "name": "Socialize PHP",
+  "require": {
+    "j7mbo/twitter-api-php": "^1.0",
+    "cosenary/instagram": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Socialize\\": "src/"
+    }
+  }
+}

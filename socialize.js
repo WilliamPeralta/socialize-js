@@ -1,5 +1,22 @@
+/*
+* Author: William Peralta
+* Note: This class require jquery
+*/
+
 function socialize(){
-git
+    var social_availables =[
+        "instagram",
+        "twitter"
+        ];
+    var options = {
+
+    };
+    this.getProfileInfo = function(search){
+        //todo: config social
+        $.post(ROUTE_SOCIAL,{search:search},function(){
+            //todo: callback
+        });
+    }
 }
 window.cercaInstagram=function(){
     $.post("./",{azione:"get_instagram",nome:$("#instaUsername").val()},function(data){
