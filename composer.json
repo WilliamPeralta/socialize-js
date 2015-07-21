@@ -1,5 +1,5 @@
 {
-  "name": "Socialize PHP",
+  "name": "wperalta/socialize",
   "require": {
     "j7mbo/twitter-api-php": "^1.0",
     "cosenary/instagram": "^2.3"
@@ -8,5 +8,6 @@
     "psr-4": {
       "Socialize\\": "src/"
     }
-  }
+  },
+  "type": "library"
 }
