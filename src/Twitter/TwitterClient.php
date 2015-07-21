@@ -29,6 +29,7 @@ class TwitterClient  implements  SocialClientContract{
         );
         return $this->api->buildOauth($URL,$METHOD)
             ->setGetfield(http_build_query($getfields))
+            ->setPostfields($getfields)
             ->performRequest();
 
     }
