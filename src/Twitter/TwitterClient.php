@@ -23,8 +23,8 @@ class TwitterClient  implements  SocialClientContract{
 
     public function getProfileInfo($ricerca){
         $URL = 'https://api.twitter.com/1.1/users/show.json';
-        $METHOD = 'get';
-        $getfield = '?screen_name='.$ricerca;
+        $METHOD = 'GET';
+        $getfield = 'screen_name='.$ricerca;
 
         return $this->api
             ->setGetfield($getfield)//http_build_query($getfields)
