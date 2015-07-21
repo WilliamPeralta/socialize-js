@@ -64,6 +64,7 @@ class SocialFactory {
                 break;
         }
         $result = $socialclient->getProfileInfo($ricerca);
-        var_dump($result);
+
+        return $result;
     }
 }
