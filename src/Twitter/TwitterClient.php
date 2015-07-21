@@ -10,6 +10,7 @@ namespace Socialize\Twitter;
 
 
 use Socialize\SocialClientContract;
+use Socialize\SocialProfileModel;
 
 class TwitterClient  implements  SocialClientContract{
     protected $settings ;
@@ -32,7 +33,16 @@ class TwitterClient  implements  SocialClientContract{
             //->setPostfields($getfields)
             ->performRequest();
 
-        return json_decode($result,true);
+        $data = json_decode($result,true);
 
+        $model = new SocialProfileModel();
+        $model->setData($data);
+        $model->setName($data['name']);
+        $model->setSocial('twitter');
+        $model->setFollowersCount($data['followers_count']);
+        $model->setUsername($data['screen_name']);
+        $model->setProfilePicture($data['profile_image_url']);
+
+        return $model;
     }
 }

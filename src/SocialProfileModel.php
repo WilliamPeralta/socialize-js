@@ -14,6 +14,43 @@ class SocialProfileModel {
     protected $name;
     protected $profile_picture;
     protected $social;
+    protected $followers_count;
+    protected $data;
+
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param mixed $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getFollowersCount()
+    {
+        return $this->followers_count;
+    }
+
+    /**
+     * @param mixed $followers_count
+     */
+    public function setFollowersCount($followers_count)
+    {
+        $this->followers_count = $followers_count;
+    }
+
+
 
     /**
      * @return mixed

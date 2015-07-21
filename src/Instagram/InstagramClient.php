@@ -10,6 +10,7 @@ namespace Socialize\Instagram;
 
 
 use Socialize\SocialClientContract;
+use Socialize\SocialProfileModel;
 
 class InstagramClient implements SocialClientContract {
     protected $settings ;
@@ -32,7 +33,16 @@ class InstagramClient implements SocialClientContract {
         $second_result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/" . $result['id'] . "?client_id=".$this->settings['client_id']."");
         $second_result = json_decode($second_result,true);
 
-        return array_merge($result,$second_result);
+        $data = array_merge($result,$second_result);
+
+        $model = new SocialProfileModel();
+        $model->setData($data);
+        $model->setName($data['full_name']);
+        $model->setSocial('instagram');
+        $model->setFollowersCount($data['data']['counts']['followed_by']);
+        $model->setUsername($data['username']);
+        $model->setProfilePicture($data['profile_picture']);
+        return $model;
 
     }
 
