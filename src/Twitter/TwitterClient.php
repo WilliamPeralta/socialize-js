@@ -28,7 +28,7 @@ class TwitterClient  implements  SocialClientContract{
             'screen_name' => $ricerca
         );
         return $this->api->buildOauth($URL,$METHOD)
-            ->setGetfield($getfields)
+            ->setGetfield(urlencode($getfields))
             ->performRequest();
 
     }
