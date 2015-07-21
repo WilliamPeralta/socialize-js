@@ -25,8 +25,8 @@ class InstagramClient implements SocialClientContract {
         $result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/search?client_id=".$this->settings['client_id']."&q=" .$ricerca);
         #first result
         $result = json_decode($result,true);
-        if (count($result->data > 0)) {
-            $result = $result->data[0];
+        if (count($result['data'] > 0)) {
+            $result = $result['data'][0];
         }
 
         $second_result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/" . $result['id'] . "?client_id=".$this->settings['client_id']."");
