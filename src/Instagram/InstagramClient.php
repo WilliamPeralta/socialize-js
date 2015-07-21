@@ -22,18 +22,18 @@ class InstagramClient implements SocialClientContract {
 
     public function getProfileInfo($ricerca)
     {
-        $result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/search?client_id=".$this->settings->client_id."&q=" .$ricerca);
+        $result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/search?client_id=".$this->settings['client_id']."&q=" .$ricerca);
         #first result
         $result = json_decode($result,true);
         if (count($result->data > 0)) {
             $result = $result->data[0];
         }
 
-        $second_result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/" . $result['id'] . "?client_id=".$this->settings->client_id."");
+        $second_result = $this->curl_file_get_contents("https://api.instagram.com/v1/users/" . $result['id'] . "?client_id=".$this->settings['client_id']."");
         $second_result = json_decode($second_result,true);
 
         return array_merge($result,$second_result);
-        
+
     }
 
     protected function curl_file_get_contents($url) {
