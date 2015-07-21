@@ -9,10 +9,12 @@
 namespace Socialize;
 
 
+use Socialize\Instagram\InstagramClient;
 use Socialize\Twitter\TwitterClient;
 
 class SocialFactory {
     protected  $twitter_settings;
+    protected  $instagram_settings;
 
     /**
      * @return mixed
@@ -31,6 +33,24 @@ class SocialFactory {
     }
 
     /**
+     * @return mixed
+     */
+    public function getInstagramSettings()
+    {
+        return $this->instagram_settings;
+    }
+
+    /**
+     * @param mixed $instagram_settings
+     */
+    public function setInstagramSettings($instagram_settings)
+    {
+        $this->instagram_settings = $instagram_settings;
+    }
+
+
+
+    /**
      * @param $social
      * @param $ricerca
      */
@@ -38,6 +58,9 @@ class SocialFactory {
         switch($social){
             case "twitter":
                 $socialclient = new TwitterClient($this->getTwitterSettings());
+                break;
+            case "instagram":
+                $socialclient = new InstagramClient($this->getInstagramSettings());
                 break;
         }
         $result = $socialclient->getProfileInfo($ricerca);
