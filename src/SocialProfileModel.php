@@ -116,4 +116,15 @@ class SocialProfileModel {
         $this->social = $social;
     }
 
+    public function toArray(){
+        return [
+            'username'=>$this->username,
+            'name'=>$this->name,
+            'profile_picture'=>$this->profile_picture,
+            'social'=>$this->social,
+            'followers_count'=>$this->followers_count,
+            'data'=>$this->data
+        ];
+    }
+
 }
